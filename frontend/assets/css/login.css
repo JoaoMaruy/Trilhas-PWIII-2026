@@ -57,9 +57,9 @@ transition:0.3s;
 }
 
 .login-box input:focus{
-border-color:#ffd000;
+border-color:#ff0000;
 outline:none;
-box-shadow:0 0 5px rgba(255,208,0,0.5);
+box-shadow:0 0 5px rgba(133, 0, 0, 0.5);
 }
 
 
@@ -68,15 +68,11 @@ box-shadow:0 0 5px rgba(255,208,0,0.5);
 .login-box button{
 width:100%;
 padding:12px;
-background:#3483fa;
-color:white;
+background:#0085a7;
+color:rgb(255, 255, 255);
 border:none;
 border-radius:5px;
 font-size:16px;
 cursor:pointer;
 transition:0.3s;
-}
-
-.login-box button:hover{
-background:#2968c8;
 }
