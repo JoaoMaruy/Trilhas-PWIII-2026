@@ -1,36 +1,60 @@
-const jwt = require("jsonwebtoken");
+const User = require("../models/UserModel")
 
-const userModel = require("../models/userModel");
+exports.register = (req, res) => {
 
-const SECRET = "segredo123";
+   const { name, email, password } = req.body
 
-exports.login = (req, res) => {
-  const { email, password } = req.body;
-  userModel.findByEmail(email, (user) => {
-    if (!user) {
-      return res.status(401).json({
-        message: "Usuário não encontrado",
-      });
-    }
-    if (user.password !== password) {
-      return res.status(401).json({
-        message: "Senha inválida",
-      });
-    }
-    const token = jwt.sign(
-      {
-        id: user.id,
-        email: user.email,
-        role: user.role,
-      },
-      SECRET,
-      { expiresIn: "1h" },
-    );
+   const newUser = {
+       name,
+       email,
+       password,
+       role: "cliente"
+   }
 
-    res.json({
-      message: "Login realizado com sucesso",
-      token,
-      role: user.role,
-    });
-  });
-};
+   User.create(newUser, (err, result) => {
+
+       if(err){
+           return res.status(400).json({message:"Erro ao cadastrar"})
+       }
+
+       res.json({message:"Usuário cadastrado com sucesso"})
+   })
+}
+
+exports.getProfile = (req, res) => {
+
+   const userId = req.user.id
+
+   User.getById(userId, (err, result) => {
+
+       res.json(result[0])
+   })
+}
+
+exports.update = (req, res) => {
+
+   const userId = req.user.id
+
+   User.update(userId, req.body, (err) => {
+
+       if(err){
+           return res.status(400).json({message:"Erro ao atualizar"})
+       }
+
+       res.json({message:"Atualizado com sucesso"})
+   })
+}
+
+exports.delete = (req, res) => {
+
+   const userId = req.user.id
+
+   User.delete(userId, (err) => {
+
+       if(err){
+           return res.status(400).json({message:"Erro ao excluir"})
+       }
+
+       res.json({message:"Conta excluída"})
+   })
+}
