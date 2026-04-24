@@ -78,3 +78,25 @@ transition:0.3s;
 .login-box button:hover{
 background:#2968c8;
 }
+
+
+.login-card{
+ width:350px;
+ text-align:center;
+}
+
+.login-card h2{
+ margin-bottom:10px;
+}
+
+.login-card p{
+ margin-bottom:20px;
+ color:#666;
+}
+
+.link{
+ display:block;
+ margin-top:15px;
+ color:#3483fa;
+ text-decoration:none;
+}

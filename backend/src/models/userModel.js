@@ -7,7 +7,7 @@ const db = mysql.createConnection({
     database: "ecommerce"
 })
 
-exports.create = (user, callback) => {
+exports.createUser = (user, callback) => {
    const sql = "INSERT INTO users (name,email,password,role) VALUES (?,?,?,?)"
    db.query(sql, [user.name, user.email, user.password, user.role], callback)
 }
@@ -24,6 +24,8 @@ exports.update = (id, user, callback) => {
 exports.delete = (id, callback) => {
    db.query("DELETE FROM users WHERE id=?", [id], callback)
 }
+
+
 
 exports.findByEmail = (email,callback) =>{
     const sql = "SELECT * from users WHERE email = ?";
