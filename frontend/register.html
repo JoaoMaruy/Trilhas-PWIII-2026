@@ -12,11 +12,18 @@
 </div>
 <div class="container">
 <div class="card">
-<h2>Criar conta</h2>
-<input class="input" id="name" placeholder="Nome">
-<input class="input" id="email" placeholder="Email">
-<input class="input" id="password" type="password" placeholder="Senha">
-<button class="btn" onclick="register()">Cadastrar</button>
+    <h2>Criar conta</h2>
+    <input class="input" id="name" placeholder="Nome">
+    <input class="input" id="email" placeholder="Email">
+    <input class="input" id="password" type="password" placeholder="Senha">
+
+    <div id="error-message" class="msg-erro"></div>
+
+    <div class="button-group">
+        <button class="btn btn-primary" onclick="register()">Cadastrar</button>
+        <button class="btn btn-secondary" onclick="window.location.href='login.html'">Já tenho conta</button>
+    </div>
+</div>
 </div>
 </div>
 <script src="assets/js/user.js"></script>

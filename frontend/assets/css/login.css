@@ -1,102 +1,121 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family: Arial, Helvetica, sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-body{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background: linear-gradient(135deg,#cc00ff,#00d9ff);
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centraliza na horizontal */
+    align-items: center;     /* Centraliza na vertical */
+    background: linear-gradient(135deg, #cc00ff, #00d9ff);
+    padding: 20px;           /* Evita que o card encoste nas bordas em celulares */
 }
 
-/* Container central */
-.login-container{
-width:100%;
-display:flex;
-justify-content:center;
-align-items:center;
+/* Remova ou ajuste o .login-container para não interferir */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
 }
 
-/* Caixa do login */
-.login-box{
-background:white;
-padding:40px;
-width:350px;
-border-radius:10px;
-box-shadow:0px 10px 25px rgba(0,0,0,0.2);
-text-align:center;
+/* A CAIXA BRANCA - Aqui é onde limitamos a largura */
+.login-box {
+    background: white;
+    padding: 40px;
+    
+    /* ESTREITO NA HORIZONTAL: */
+    width: 100%;             /* Ocupa o que der... */
+    max-width: 350px;        /* ...mas NÃO passa de 350px */
+    
+    border-radius: 10px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+    text-align: center;
+    
+    /* Organização vertical dos itens internos */
+    display: flex;
+    flex-direction: column;
 }
 
-/* Título */
-.login-box h2{
-margin-bottom:10px;
-color:#333;
+/* Título e Texto */
+.login-box h2 {
+    margin-bottom: 8px;
+    color: #333;
 }
 
-/* Texto */
-.login-box p{
-margin-bottom:25px;
-color:#666;
+.login-box p {
+    margin-bottom: 25px;
+    color: #666;
+    font-size: 14px;
 }
 
-/* Campos input*/
-.login-box input{
-width:100%;
-padding:12px;
-margin-bottom:15px;
-border:1px solid #ccc;
-border-radius:5px;
-font-size:14px;
-transition:0.3s;
+/* Campos de entrada */
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px; /* Espaço entre campos */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: 0.3s;
 }
 
-.login-box input:focus{
-border-color:#ffd000;
-outline:none;
-box-shadow:0 0 5px rgba(255,208,0,0.5);
+.login-box input:focus {
+    border-color: #3483fa;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 131, 250, 0.3);
 }
 
-
-
-/* Botão */
-.login-box button{
-width:100%;
-padding:12px;
-background:#3483fa;
-color:white;
-border:none;
-border-radius:5px;
-font-size:16px;
-cursor:pointer;
-transition:0.3s;
+/* Botão Principal */
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    background: #3483fa;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 5px; /* Pequeno respiro acima do botão */
 }
 
-.login-box button:hover{
-background:#2968c8;
+.login-box button:hover {
+    background: #2968c8;
+    transform: translateY(-1px);
 }
 
-
-.login-card{
- width:350px;
- text-align:center;
+/* Link de Novo Usuário / Voltar */
+.signup-link {
+    margin-top: 25px; /* Separa bem o botão do link inferior */
+    font-size: 14px;
+    color: #636e72;
 }
 
-.login-card h2{
- margin-bottom:10px;
+.signup-link a {
+    color: #3483fa; 
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-.login-card p{
- margin-bottom:20px;
- color:#666;
+.signup-link a:hover {
+    color: #0400ff;
+    text-decoration: underline;
 }
 
-.link{
- display:block;
- margin-top:15px;
- color:#3483fa;
- text-decoration:none;
+/* Estilo para a mensagem de erro (que adicionamos antes) */
+.msg-erro {
+    color: #d63031;
+    background: #fff0f0;
+    padding: 8px;
+    font-size: 13px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    display: none; /* Escondido por padrão */
 }

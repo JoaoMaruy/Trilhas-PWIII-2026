@@ -1,52 +1,23 @@
-const token = localStorage.getItem("token")
+async function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-async function register(){
-const name = document.getElementById("name").value
-const email = document.getElementById("email").value
-const password = document.getElementById("password").value
-const res = await fetch("http://localhost:3000/api/users/register",{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body: JSON.stringify({name,email,password})
-})
-const data = await res.json()
-alert(data.message)
+    try {
+        const res = await fetch("http://localhost:3000/api/users/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+            localStorage.setItem("token", data.token); // Salva o token recebido
+            window.location.href = "home.html"; // Redireciona para a home
+        } else {
+            alert(data.message || "Erro ao fazer login");
+        }
+    } catch (error) {
+        console.error("Erro no login:", error);
+    }
 }
-
-async function loadProfile(){
-    const res = await fetch("http://localhost:3000/api/users/profile",{
-        headers:{authorization: token}
-    })
-    const user = await res.json()
-    document.getElementById("name").value = user.name
-    document.getElementById("email").value = user.email
-}
-
-async function updateUser(){
-    const name = document.getElementById("name").value
-    const email = document.getElementById("email").value
-    const password = document.getElementById("password").value
-    const res = await fetch("http://localhost:3000/api/users/update",{
-        method:"PUT",
-        headers:{
-            "Content-Type":"application/json",
-            authorization: token
-        },
-        body: JSON.stringify({name,email,password})
-    })
-    const data = await res.json()
-    alert(data.message)
-}
-
-async function deleteUser(){
-    const res = await fetch("http://localhost:3000/api/users/delete",{
-        method:"DELETE",
-        headers:{authorization: token}
-    })
-    const data = await res.json()
-    alert(data.message)
-    localStorage.removeItem("token")
-    window.location.href = "index.html"
-}
-
-loadProfile()

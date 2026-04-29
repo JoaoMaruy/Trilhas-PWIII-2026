@@ -1,3 +1,66 @@
-h2{
-margin-bottom:20px;
+/* Container dos botões */
+.button-group {
+    display: flex;
+    flex-direction: column; /* Botões um embaixo do outro no celular */
+    gap: 12px;              /* Espaço de 12px entre os botões */
+    margin-top: 20px;
+}
+
+/* Estilo base dos botões */
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.1s ease;
+    width: 100%; /* Ocupa a largura total do card */
+}
+
+/* Botão de Destaque (Cadastrar) */
+.btn-primary {
+    background-color: #2ecc71; /* Verde */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #27ae60;
+}
+
+/* Botão Secundário (Voltar/Login) */
+.btn-secondary {
+    background-color: transparent;
+    color: #7f8c8d; /* Cinza */
+    border: 1px solid #bdc3c7;
+    font-weight: normal; /* Menos peso visual que o principal */
+}
+
+.btn-secondary:hover {
+    background-color: #f8f9fa;
+    color: #34495e;
+}
+
+/* Efeito de clique */
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Para telas maiores, coloca um ao lado do outro */
+@media (min-width: 480px) {
+    .button-group {
+        flex-direction: row; /* Lado a lado */
+    }
+}
+
+.msg-erro {
+    display: none; /* Começa escondida */
+    background-color: #ffeaea;
+    color: #d63031;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    border-left: 4px solid #d63031;
+    text-align: left;
 }
